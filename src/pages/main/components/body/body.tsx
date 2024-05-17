@@ -4,7 +4,7 @@ const Body = (): JSX.Element => {
 
 
   return (
-    <div className="w-full flex place-content-center m-4">
+    <div className="flex place-content-center pt-20 pl-4 pr-4">
       {!xd && (
         <div className="">
           <button className="" onClick={handleClick}>
