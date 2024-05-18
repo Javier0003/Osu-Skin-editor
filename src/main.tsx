@@ -5,6 +5,7 @@ import App from './pages/main/main-page'
 import ConfigPage from './pages/config-page/config-page'
 import './styles.css'
 import Top from './pages/main/components/top-panel/top-panel'
+import Path from './pages/path/path'
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const routes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/path',
+    element: <Path />
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

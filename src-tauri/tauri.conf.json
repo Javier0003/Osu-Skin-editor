@@ -15,13 +15,25 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "dialog": {
+        "message": true,
+        "save": true,
+        "confirm": true
+      },
+      "fs": {
+        "all": true,
+        "scope": ["$APPDATA/*","$APPDATA", "$APPDATA/**", "$DESKTOP"]
+      },
+      "path": {
+        "all": true
       }
     },
     "windows": [
       {
         "title": "osu-skin-editor",
-        "width": 800,
-        "height": 600
+        "width": 1280,
+        "height": 720
       }
     ],
     "security": {
