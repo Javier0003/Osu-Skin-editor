@@ -27,6 +27,10 @@
       },
       "path": {
         "all": true
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": ["$APPDATA/assets/*"]
       }
     },
     "windows": [
@@ -37,12 +41,13 @@
       }
     ],
     "security": {
-      "csp": null
+      "dangerousDisableAssetCspModification": ["style-src"],
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' asset:"
     },
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "osu!",
+      "identifier": "O!SE",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",

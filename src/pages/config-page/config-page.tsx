@@ -1,7 +1,7 @@
 function ConfigPage() {
   return (
     <div className="container">
-      Hello nigga
+      config
     </div>
   );
 }

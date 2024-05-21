@@ -10,6 +10,8 @@ type defImg = {
 
 const Body = (): JSX.Element => {
   const [comps, setComps] = useState<FileEntry[]>([])
+  const [userComps, setUserComps] = useState<boolean>(false)
+
   const xd2 = FilePath((state) => state.path)
   const xd = false
   const handleClick = (): void => {
@@ -21,7 +23,6 @@ const Body = (): JSX.Element => {
       const compList = await readDir(xd2)
 
       setComps(compList)
-
     }
 
     fetchData()
@@ -38,8 +39,9 @@ const Body = (): JSX.Element => {
         </div>
       )}
 
-      <div className="flex flex-col border w-2/12">
+      <div className="flex flex-col border w-2/12 h-40">
         <img src="" alt="" />
+        <p>hola</p>
       </div>
     </div>
   )
