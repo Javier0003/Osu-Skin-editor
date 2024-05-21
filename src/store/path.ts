@@ -6,7 +6,7 @@ type FP = {
 }
 
 export const FilePath = create<FP>((set) => ({
-  path: '',
+  path: "C:\\Users\\javie\\AppData\\Local\\osu!\\/skins\\whypan",
   GetPath: (val) => {
     set({ path: val })
   }
