@@ -1,6 +1,14 @@
+import { useEffect } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import { FilePath } from '../../store/path'
 
 const Top = (): JSX.Element => {
+  const { CheckDefault } = FilePath((state) => state)
+
+  useEffect(() => {
+    CheckDefault()
+  }, [])
+
   return (
     <>
       <div className="bg-slate-950 h-14 flex items-center gap-6 justify-between absolute w-full pl-3 pr-3">

@@ -1,11 +1,17 @@
-import { FileEntry, readDir } from '@tauri-apps/api/fs'
+import {
+  BaseDirectory,
+  FileEntry,
+  readDir,
+  writeTextFile
+} from '@tauri-apps/api/fs'
 import { appLocalDataDir } from '@tauri-apps/api/path'
 import { useEffect, useState } from 'react'
 import { FilePath } from '../../store/path'
 import { Link } from 'react-router-dom'
 
-const fetchFolders = async (name: string): Promise<FileEntry[]> => {
-  const user = name.split('\\')[2]
+const fetchFolders = async (): Promise<FileEntry[]> => {
+  const userName = await appLocalDataDir()
+  const user = userName.split('\\')[2]
   const result = await readDir(
     `C:\\Users\\${user}\\AppData\\Local\\osu!\\Skins`
   )
@@ -13,20 +19,24 @@ const fetchFolders = async (name: string): Promise<FileEntry[]> => {
 }
 
 const Path = () => {
-  const getSkinPath = FilePath((state) => state.GetPath)
+  const { GetPath, config } = FilePath((state) => state)
   const [allSkins, setSkins] = useState<FileEntry[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const userName = await appLocalDataDir()
-      const skins = await fetchFolders(userName)
+      const skins = await fetchFolders()
       setSkins(skins)
     }
     fetchData()
   }, [])
 
-  const handleSkin = (skinData: FileEntry) => {
-    getSkinPath(skinData.path)
+  const handleSkin = async (skinData: FileEntry) => {
+    if (config?.persist) {
+      await writeTextFile('skin.conf', skinData.path, {
+        dir: BaseDirectory.AppConfig
+      })
+    }
+    GetPath(skinData.path)
   }
 
   return (

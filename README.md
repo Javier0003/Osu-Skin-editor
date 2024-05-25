@@ -3,8 +3,10 @@
 
 # Todo
 
-- [ ] Setup ui
-- [ ] Saving paths
-- [ ] Persisting folder paths
-- [ ] Configuration page
+- [x] Setup ui
+- [x] Saving paths
+- [x] Persisting folder paths
+- [x] Configuration page
 - [ ] decent looking please
+- [ ] extracting files to create a skin from scratch
+- [ ] swapping files with saved assets

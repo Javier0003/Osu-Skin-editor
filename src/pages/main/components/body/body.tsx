@@ -1,48 +1,31 @@
-import { useEffect, useState } from 'react'
+import ImgComp from './components/image'
+import { sessionFilePath } from '../../../../store/sessionPaths'
+import { useEffect } from 'react'
 import { FilePath } from '../../../../store/path'
-import { FileEntry, readDir } from '@tauri-apps/api/fs'
-import { convertFileSrc } from '@tauri-apps/api/tauri'
-
-type defImg = {
-  file: FileEntry[]
-  img: string
-}
 
 const Body = (): JSX.Element => {
-  const [comps, setComps] = useState<FileEntry[]>([])
-  const [userComps, setUserComps] = useState<boolean>(false)
+  const { sessionPath, fetchData } = sessionFilePath((state) => state)
+  const { path } = FilePath((state) => state)
 
-  const xd2 = FilePath((state) => state.path)
-  const xd = false
-  const handleClick = (): void => {
-    console.log(xd2)
-    console.log(comps)
-  }
-  useEffect(() => {
-    const fetchData = async () => {
-      const compList = await readDir(xd2)
-
-      setComps(compList)
-    }
-
-    fetchData()
-
+  useEffect(() =>{
+    fetchData(path)
   }, [])
 
   return (
-    <div className="flex place-content-center pt-20 pl-4 pr-4">
-      {!xd && (
-        <div className="">
-          <button className="" onClick={handleClick}>
-            {'xd'}
-          </button>
-        </div>
-      )}
-
-      <div className="flex flex-col border w-2/12 h-40">
-        <img src="" alt="" />
-        <p>hola</p>
-      </div>
+    <div className="flex place-content-center pt-20 pl-4 pr-4 flex-wrap gap-1">
+      {sessionPath.map((val, index) => {
+        const format = val.path.split('.').pop()
+        if (format === 'png') return <ImgComp val={val} i={index} key={`comp_${index}`}/>
+        
+        // if (format === 'ogg')
+        //   return (
+        //     <div className="w-2/12 h-40" key={`container_${index}`}>
+        //       <img src={assetUrl} alt="" key={`img_${index}`} />
+        //       {val.name}
+        //     </div>
+        //   )
+        return null
+      })}
     </div>
   )
 }
