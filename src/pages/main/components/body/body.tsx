@@ -25,13 +25,11 @@ const Body = (): JSX.Element => {
         <ModalComp path={modal.path} asset={modal.asset} name={modal.name} close={setModal} />
       )}
 
-      {sessionPath.cursor.map((val, index) => {
+      {sessionPath['cursor'].map((val, index) => {
         const format = val.path.split('.').pop()
-        if (format === 'png')
-          return (
-            <ImgComp val={val} i={index} key={`comp_${index}`} set={setModal} />
-          )
-        return null
+        if (format !== 'png') return null
+        
+        return <ImgComp val={val} i={index} key={`comp_${index}`} set={setModal} />
       })}
     </div>
   )
