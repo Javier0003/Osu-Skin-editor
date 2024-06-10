@@ -1,6 +1,12 @@
+import { assetState } from '../../../../store/localOrSkin'
 import Button from './components/button'
+type setValues = 'cursor' | 'circles' | 'localCursors' | 'localCircles'
 
 const LeftPannel = (): JSX.Element => {
+  const { setAsset } = assetState((state) => state)
+
+  const handleClick = (val: setValues) => setAsset(val)
+  
   return (
     <div className="bg-slate-950 flex w-2/12 p-2 pt-16 flex-col justify-between">
       <Button>Select Path</Button>
