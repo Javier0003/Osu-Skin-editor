@@ -17,7 +17,7 @@ const Top = (): JSX.Element => {
           <Link to={'/config'}>
             <button className="bg-slate-900 text-cyan-100">config</button>
           </Link>
-          <Link to={'/app'}>
+          <Link to={'/'}>
             <button className="bg-slate-900 text-cyan-100">app</button>
           </Link>
         </div>

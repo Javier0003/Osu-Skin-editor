@@ -47,7 +47,7 @@ const Path = () => {
     <div className="">
       <div className="flex justify-between p-2">
         <h1>Select Skin</h1>
-        <Link to={'/app'}>
+        <Link to={'/'}>
           <button>Return</button>
         </Link>
       </div>
@@ -56,7 +56,7 @@ const Path = () => {
           allSkins.map((val, index) => {
             if (!val.children) return
             return (
-              <Link to={'/app'} key={`link_${index}`}>
+              <Link to={'/'} key={`link_${index}`}>
                 <button
                   key={`button_${index}`}
                   className="w-4/6 ml-7"
