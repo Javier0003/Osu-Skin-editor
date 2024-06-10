@@ -17,7 +17,7 @@ const routes = createBrowserRouter([
         element: <ConfigPage />,
       },
       {
-        path: '/app',
+        path: '/',
         element: <App />,
       },
     ],
