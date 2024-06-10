@@ -8,5 +8,4 @@
 - [x] Persisting folder paths
 - [x] Configuration page
 - [ ] decent looking please
-- [ ] extracting files to create a skin from scratch
 - [ ] swapping files with saved assets
