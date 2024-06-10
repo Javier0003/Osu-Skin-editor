@@ -36,13 +36,13 @@ export const FilePath = create<FP>((set) => ({
       })
       const obj = JSON.parse(defaultPath)
 
-      if(obj.PersistSkinPath){
+      if (obj.PersistSkinPath) {
         const persistedSkin = await readTextFile('skin.conf', {
           dir: BaseDirectory.AppConfig
         })
-        set({ path: persistedSkin})
+        set({ path: persistedSkin })
       }
-       
+
       set({
         config: {
           persist: obj.PersistSkinPath,
