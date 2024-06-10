@@ -8,6 +8,7 @@ import { appLocalDataDir } from '@tauri-apps/api/path'
 import { useEffect, useState } from 'react'
 import { FilePath } from '../../store/path'
 import { Link } from 'react-router-dom'
+import { sessionFilePath } from '../../store/sessionPaths'
 
 const fetchFolders = async (): Promise<FileEntry[]> => {
   const userName = await appLocalDataDir()
@@ -20,7 +21,9 @@ const fetchFolders = async (): Promise<FileEntry[]> => {
 
 const Path = () => {
   const { GetPath, config } = FilePath((state) => state)
-  const [allSkins, setSkins] = useState<FileEntry[]>([])
+  const [ allSkins, setSkins ] = useState<FileEntry[]>([])
+  const { fetchData } = sessionFilePath((state) => state)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +40,7 @@ const Path = () => {
       })
     }
     GetPath(skinData.path)
+    fetchData(skinData.path)
   }
 
   return (
