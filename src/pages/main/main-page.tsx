@@ -1,5 +1,5 @@
-import Body from './components/body/body'
-import LeftPannel from './components/left-pannel/left-pannel'
+import Body from './components/body/body/body'
+import LeftPannel from './components/body/left-pannel'
 
 function App(): JSX.Element {
   return (
