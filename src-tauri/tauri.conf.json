@@ -23,14 +23,38 @@
       },
       "fs": {
         "all": true,
-        "scope": ["$APPDATA/*","$APPDATA", "$APPDATA/**", "$DESKTOP", "$all", "**", "$APPCONFIG"]
+        "copyFile": true,
+        "scope": [
+          "$APPDATA/*",
+          "$APPDATA",
+          "$APPDATA/**",
+          "$DESKTOP",
+          "$HOME",
+          "$all",
+          "**",
+          "$APPCONFIG",
+          "$DOWNLOADS"
+        ]
       },
       "path": {
         "all": true
       },
       "protocol": {
         "asset": true,
-        "assetScope": ["$APPDATA/*","$APPDATA", "$APPDATA/**", "$DESKTOP", "$all", "**", "$APPCONFIG"]
+        "assetScope": [
+          "$APPDATA/*",
+          "$APPDATA",
+          "$APPDATA/**",
+          "$HOME",
+          "$DESKTOP",
+          "$all",
+          "**",
+          "$APPCONFIG",
+          "$DOWNLOADS"
+        ]
+      },
+      "os": {
+        "all": true
       }
     },
     "windows": [
