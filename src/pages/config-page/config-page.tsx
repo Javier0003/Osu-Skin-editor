@@ -1,15 +1,16 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { FilePath } from '../../store/path'
+import useChecked from '../../hooks/check-box'
 
 export default function ConfigPage() {
   const [osuPath, setOsuPath] = useState<string>('')
-  const [persistS, setPersist] = useState<boolean>(false)
   const { editFile, config, CheckDefault } = FilePath((state) => state)
+  const [persist, setPersist] = useChecked(config?.persist || false)
+
   useEffect(() => {
     const asyncEffect = async () => {
       if (!config) return
       setOsuPath(config.DefaultOsuPath)
-      setPersist(config.persist)
     }
     asyncEffect()
   }, [])
@@ -17,7 +18,7 @@ export default function ConfigPage() {
   const handleClick = () => {
     if (!config) return
     CheckDefault()
-    editFile(osuPath, persistS)
+    editFile(osuPath, persist)
   }
 
   return (
@@ -34,13 +35,9 @@ export default function ConfigPage() {
         />
       </div>
 
-      <div>
+      <div className="flex flex-row gap-3">
         <label htmlFor="">Persist Skin</label>
-        <input
-          type="checkbox"
-          onChange={() => setPersist(!persistS)}
-          checked={persistS}
-        />
+        <input type="checkbox" onChange={setPersist} checked={persist} />
       </div>
       <button className="absolute right-20 bottom-20" onClick={handleClick}>
         Save
