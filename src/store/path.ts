@@ -5,8 +5,8 @@ import {
   readTextFile,
   writeTextFile
 } from '@tauri-apps/api/fs'
-import { appLocalDataDir } from '@tauri-apps/api/path'
 import { create } from 'zustand'
+import getLocalUser from '../utils/local-user-name'
 
 type FP = {
   path: string
@@ -73,8 +73,7 @@ export const FilePath = create<FP>((set) => ({
 }))
 
 async function configFileTemplate() {
-  const userName = await appLocalDataDir()
-  const user = userName.split('\\')[2]
+  const user = await getLocalUser()
   return JSON.stringify({
     PersistSkinPath: true,
     DefaultOsuPath: `C:\\Users\\${user}\\AppData\\Local\\osu!\\Skins`
