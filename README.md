@@ -10,5 +10,8 @@
 - [x] Saving paths
 - [x] Persisting folder paths
 - [x] Configuration page
-- [ ] decent looking please
+- [x] decent looking please
+- [x] Saving cursor and circle sets
+- [x] Creating folders for skin sets
+- [ ] open modal to put set names
 - [ ] swapping files with saved assets
