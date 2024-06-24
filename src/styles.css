@@ -115,3 +115,7 @@ button {
 body, #app, #root {
   height: 100%
 } 
+
+body::-webkit-scrollbar{
+  display:none
+}
